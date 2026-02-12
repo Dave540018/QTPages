@@ -118,6 +118,7 @@ Then use:
 
 
 This works perfectly with GitHub Pages.
+
 ---
 ## 📌 Using Google Drive Images (Important)
 
@@ -202,6 +203,7 @@ Find:
 You can change colors like:
 
 from-pink-300 via-rose-400 to-red-500
+
 ---
 ## ❗ Common Problems
 Image Not Showing?
