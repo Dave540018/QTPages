@@ -97,6 +97,7 @@ Find this line:
 
 
 Replace the link inside src="" with your photo link.
+
 ---
 ## 📌 Best Method – Use GitHub Assets Folder
 
