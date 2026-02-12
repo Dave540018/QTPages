@@ -95,10 +95,10 @@ Find this line:
 
 <img src="IMAGE_LINK_HERE" alt="Memory 1">
 
----
-##Replace the link inside src="" with your photo link.
 
-📌 Best Method – Use GitHub Assets Folder
+Replace the link inside src="" with your photo link.
+---
+## 📌 Best Method – Use GitHub Assets Folder
 
 Create folder:
 
