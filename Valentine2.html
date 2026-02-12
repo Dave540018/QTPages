@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Digital Valentine 💌</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Pacifico&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
+        .cursive { font-family: 'Pacifico', cursive; }
+        .handwritten { font-family: 'Dancing Script', cursive; }
+        
+        /* Fixed Envelope Logic */
+        .envelope-container {
+            position: relative;
+            width: 320px;
+            height: 220px;
+            transition: transform 0.8s ease-in-out;
+            margin-top: 50px; /* Gives space for the letter to pop up */
+        }
+
+        .envelope {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #f43f5e;
+            border-radius: 0 0 15px 15px;
+            z-index: 10;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+
+        /* The Flap */
+        .flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 160px solid transparent;
+            border-right: 160px solid transparent;
+            border-top: 120px solid #fb7185;
+            transform-origin: top;
+            transition: transform 0.6s ease-in-out;
+            z-index: 30;
+        }
+
+        /* The Front of Envelope */
+        .envelope-front {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 160px solid #f43f5e;
+            border-right: 160px solid #f43f5e;
+            border-bottom: 110px solid #e11d48;
+            border-top: 110px solid transparent;
+            z-index: 40;
+            border-radius: 0 0 15px 15px;
+        }
+
+        /* The Letter */
+        .letter {
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            width: 290px;
+            height: 190px;
+            background: #ffffff;
+            z-index: 20;
+            transition: all 0.8s ease-in-out;
+            padding: 25px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        /* Open State Animations */
+        .active .flap {
+            transform: rotateX(180deg);
+            z-index: 5;
+        }
+
+        .active .letter {
+            transform: translateY(-240px); /* Moves it up into view */
+            height: 380px; /* Expands the paper */
+            z-index: 35;
+        }
+
+        .active.envelope-container {
+            transform: translateY(100px); /* Moves whole envelope down to keep letter on screen */
+        }
+
+        /* Balloon Animation */
+        .balloon {
+            position: fixed;
+            bottom: -100px;
+            animation: floatUp 7s linear infinite;
+            z-index: 0;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            100% { transform: translateY(-120vh) rotate(20deg); opacity: 0; }
+        }
+
+        .bg-love {
+            background: linear-gradient(135deg, #fb7185 0%, #e11d48 50%, #881337 100%);
+        }
+
+                /* Custom Heart Cursor */
+        body { cursor: none; } /* hide normal cursor */
+
+        #cursor {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 22px;
+        height: 22px;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        z-index: 9999;
+        opacity: 0.95;
+        filter: drop-shadow(0 6px 10px rgba(0,0,0,0.25));
+        }
+
+        /* Make icon fill the cursor box */
+        #cursor svg {
+        width: 100%;
+        height: 100%;
+        }
+
+    </style>
+</head>
+<body class="bg-love min-h-screen text-slate-800">
+    <div id="cursor">
+        <i data-lucide="heart" class="fill-rose-600 text-rose-600 w-full h-full"></i>
+    </div>
+    <div id="balloon-container" class="fixed inset-0 pointer-events-none"></div>
+
+    <section class="h-screen flex flex-col items-center justify-center p-4">
+        
+        <div id="envelope-wrapper" class="envelope-container cursor-pointer" onclick="openValentine()">
+            <div class="flap"></div>
+            <div class="envelope"></div>
+            <div class="letter" id="letter-content">
+                <div class="text-rose-500 mb-2 flex justify-center">
+                    <i data-lucide="heart" class="fill-current w-6 h-6"></i>
+                </div>
+                <div class="text-center space-y-4">
+                    <h2 class="cursive text-2xl text-rose-600">My Dearest [Name]</h2>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        I wanted to make something as unique and beautiful as you are. 
+                        Every moment we spend together is my favorite memory.
+                    </p>
+                    <div class="pt-4 border-t border-rose-100">
+                        <p class="handwritten text-xl text-rose-500">Scroll down to see our story...</p>
+                    </div>
+                </div>
+            </div>
+            <div class="envelope-front"></div>
+        </div>
+
+        <p id="instruction" class="mt-20 text-white/90 cursive text-2xl animate-pulse">
+            Click the envelope to open
+        </p>
+    </section>
+
+    <div id="content-reveal" class="hidden opacity-0 transition-all duration-1000 max-w-4xl mx-auto px-6 pb-20 space-y-16">
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-white p-4 shadow-2xl transform -rotate-2 hover:rotate-0 transition-all">
+                <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=600&q=80" class="w-full h-72 object-cover rounded-sm">
+                <p class="handwritten text-center text-2xl mt-4">One of many favorites...</p>
+            </div>
+            <div class="bg-white p-4 shadow-2xl transform rotate-2 hover:rotate-0 transition-all">
+                <img src="https://lh3.googleusercontent.com/rd-d/ALs6j_FXyfPTyjocivERfhgXZsvcJM404C9jqQP3vQ-kMxFoGnCdVdFpC1m1TULT0NtradJT8O0gdOeL3j_9e3cqNh5Qda69u_SE4uha2h45UW7YwHCl2warUvBtViLSbRTstnweOV0Zt2JEo9fzkysqfyMGARs-CnEpn8ZUnHGuE_6v0wPL88PKqlkLWZ6AQh23h8m4jdhAErhTLitrfquqUoxOBoyRw0tduTc8rsO3knpaGgjhpOOgR9ol_G0aJd4lQa3fD50He_XWpYQHpCnfUwfGo4V1j-gPMEELvXoBseelgWBzcZUzGoCp9JW-k35Ilii_Gnt95oroFZE-hB1FxZNsGzCpI9sqNoTw8VHI_9hL9vzLbkSZ1RmKofb2KWxS0ZpzMxIhDrxQjzZrVJpOj4VHqH6QhXsfQ-ZMF9ZIyiWSmD7F9assfQCHUTgeOj6J5j7_mK68jP_R1AP4Nh3CA5Av06NWwdDu2ulyphJW6Nyw6YuqXqgyiaovIqyXn-Qlx6Bj1O6e7qqcB2F2OOaAEHyywvBsQMIW0BLXwyg-K_DA6XaLpMj9m8syEogfCb5NXMx2XheV3030c05WncQqYyawQ0g2txMurAKHO4j6BoIiR3UAheZR6sx7ZmDOuLxvPegsUAaHn-7ZLHid-h_EKCm7O8LU_SNLqaWPlXSgIiZiSudtCKlYPrv-dXqrFpqcJBX-BE7bkhtbA04-iSjvoYblNBDYPy_9kMY0WEjTfuPe7I5C3ZTOaaETixvtmw5BpkuJXU31-2Pa11LPtuDXAqgwy4FtGs2PhgGN4qYBlUIAYGDFttsjhBZaB-Tdfea-x-h7cc9DHvj98z6eq2McPy848R3x1EmVQ4ngHVWvPWwxNESJ_CrcyxMPXMXJqiZGJl6s-Y8qOPoiORr3cMPm9P7JreU3li4PErUzAo0puhn5mA4pZYiLxMoQUebnkP4FihkhyGRJ_owxOBkgbTX4rUQ4wwruaHS0XuCsMTQ-08XmPAj769JJnlsiw0JY4M_muP57aLhLcg7cs4QTt00Amu_st9IgJ3w3uc93jTtm_ScM3x8cuRhFZkSAf0Nqx0PVNt0bRldcgem2b61rKiiDXNpTZXTOqN9tWeHa7R4C9jMObOF1tKMHpdbRusD-GFERGF1vjgMoXdclVJ52LdNy=w1920-h908?auditContext=prefetch?auto=format&fit=crop&w=600&q=80" class="w-full h-72 object-cover rounded-sm">
+                <p class="handwritten text-center text-2xl mt-4">The best times with you</p>
+            </div>
+        </div>
+
+        <div class="bg-white/10 backdrop-blur-md p-6 rounded-3xl border border-white/20">
+            <h3 class="text-white handwritten text-3xl text-center mb-6">A Little Something for You</h3>
+            <div class="aspect-video rounded-xl overflow-hidden shadow-2xl">
+                <iframe class="w-full h-full" src="https://www.youtube.com/embed/WojBNnIEpR4?si=hVIE2wSnCYMbZz_I" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="text-center space-y-6 py-10">
+            <div class="flex justify-center gap-2">
+                <i data-lucide="sparkles" class="text-yellow-300 animate-pulse"></i>
+                <i data-lucide="heart" class="text-white fill-current animate-bounce"></i>
+                <i data-lucide="sparkles" class="text-yellow-300 animate-pulse"></i>
+            </div>
+            <h1 class="text-white handwritten text-6xl md:text-8xl drop-shadow-2xl">
+                Happy Valentine's Day, [Name]!
+            </h1>
+            <p class="text-white/80 cursive text-2xl italic">I love you to the moon and back.</p>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+        const cursor = document.getElementById('cursor');
+
+        // 1. Custom Heart Cursor Logic
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+        function openValentine() {
+            // Trigger Envelope Animation
+            document.getElementById('envelope-wrapper').classList.add('active');
+            document.getElementById('instruction').style.opacity = '0';
+            
+            // Show Content
+            const content = document.getElementById('content-reveal');
+            content.classList.remove('hidden');
+            setTimeout(() => {
+                content.classList.add('opacity-100');
+            }, 500);
+
+            // Start Balloon Rain
+            setInterval(createBalloon, 400);
+        }
+
+        function createBalloon() {
+            const container = document.getElementById('balloon-container');
+            const balloon = document.createElement('div');
+            balloon.classList.add('balloon');
+            
+            const colors = ['#fb7185', '#f43f5e', '#ec4899', '#fce7f3'];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            const left = Math.random() * 100;
+            const size = Math.floor(Math.random() * 30) + 20;
+            
+            balloon.style.left = left + 'vw';
+            balloon.innerHTML = `
+                <svg width="${size}" height="${size * 1.5}" viewBox="0 0 24 30" fill="${color}">
+                    <path d="M12 0C5.37 0 0 5.37 0 12c0 3.5 1.5 6.6 3.9 8.7L12 30l8.1-9.3c2.4-2.1 3.9-5.2 3.9-8.7 0-6.63-5.37-12-12-12z"/>
+                </svg>
+            `;
+            
+            container.appendChild(balloon);
+            setTimeout(() => balloon.remove(), 7000);
+        }
+    </script>
+</body>
+</html>

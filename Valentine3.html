@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Eternal Story 💖</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@1,700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root { --accent: #f43f5e; }
+        body { font-family: 'Outfit', sans-serif; background: #0f172a; cursor: none; overflow-x: hidden; scroll-behavior: smooth; }
+        .playfair { font-family: 'Playfair Display', serif; }
+        .handwritten { font-family: 'Dancing Script', cursive; }
+        
+        /* Glassmorphism Logic */
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            transform-style: preserve-3d;
+        }
+        .glass:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--accent);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        /* 3D Perspective */
+        .perspective-grid { perspective: 2000px; }
+
+        /* Custom Cursor */
+        #cursor {
+            width: 24px; height: 24px;
+            position: fixed; pointer-events: none;
+            z-index: 9999; transform: translate(-50%, -50%);
+            transition: transform 0.1s ease;
+        }
+
+        /* Animated Background Gradient */
+        .bg-mesh {
+            background-color: #0f172a;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(244, 63, 94, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(251, 113, 133, 0.15) 0px, transparent 50%);
+        }
+
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .animate-float { animation: float 4s ease-in-out infinite; }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 1s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body class="bg-mesh text-white">
+
+    <div id="cursor"><i data-lucide="heart" class="text-rose-500 fill-current w-full h-full"></i></div>
+
+    <section id="entry" class="h-screen flex flex-col items-center justify-center relative z-50 bg-slate-950 transition-all duration-1000">
+        <div class="text-center space-y-8">
+            <div class="relative inline-block group cursor-pointer" onclick="unlock()">
+                <div class="absolute -inset-10 bg-rose-500/20 blur-3xl rounded-full group-hover:bg-rose-500/40 transition duration-1000"></div>
+                <div class="relative w-32 h-32 border border-white/10 rounded-full flex items-center justify-center bg-white/5 backdrop-blur-md animate-float">
+                    <i data-lucide="lock" id="lock-icon" class="w-10 h-10 text-rose-400"></i>
+                </div>
+            </div>
+            <h2 class="playfair italic text-3xl text-rose-100/80 tracking-wide">Touch to unlock our world</h2>
+        </div>
+    </section>
+
+    <main id="main-content" class="hidden opacity-0 max-w-7xl mx-auto px-6 py-12 md:py-24 space-y-6 perspective-grid">
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="md:col-span-2 glass rounded-[3rem] p-10 flex flex-col justify-center space-y-4 reveal">
+                <div class="flex items-center gap-3 text-rose-400">
+                    <i data-lucide="calendar" class="w-5 h-5"></i>
+                    <span class="uppercase tracking-[0.2em] text-xs font-bold" id="anniversary-count">Counting Our Days</span>
+                </div>
+                <h1 class="text-5xl md:text-7xl font-semibold tracking-tighter">Love in <span class="playfair italic text-rose-500">Motion.</span></h1>
+                <p class="text-slate-400 text-lg max-w-md">Every second, every minute, every hour... it’s always been you.</p>
+            </div>
+            
+            <div class="glass rounded-[3rem] overflow-hidden reveal">
+                <img src="https://lh3.googleusercontent.com/rd-d/ALs6j_FXyfPTyjocivERfhgXZsvcJM404C9jqQP3vQ-kMxFoGnCdVdFpC1m1TULT0NtradJT8O0gdOeL3j_9e3cqNh5Qda69u_SE4uha2h45UW7YwHCl2warUvBtViLSbRTstnweOV0Zt2JEo9fzkysqfyMGARs-CnEpn8ZUnHGuE_6v0wPL88PKqlkLWZ6AQh23h8m4jdhAErhTLitrfquqUoxOBoyRw0tduTc8rsO3knpaGgjhpOOgR9ol_G0aJd4lQa3fD50He_XWpYQHpCnfUwfGo4V1j-gPMEELvXoBseelgWBzcZUzGoCp9JW-k35Ilii_Gnt95oroFZE-hB1FxZNsGzCpI9sqNoTw8VHI_9hL9vzLbkSZ1RmKofb2KWxS0ZpzMxIhDrxQjzZrVJpOj4VHqH6QhXsfQ-ZMF9ZIyiWSmD7F9assfQCHUTgeOj6J5j7_mK68jP_R1AP4Nh3CA5Av06NWwdDu2ulyphJW6Nyw6YuqXqgyiaovIqyXn-Qlx6Bj1O6e7qqcB2F2OOaAEHyywvBsQMIW0BLXwyg-K_DA6XaLpMj9m8syEogfCb5NXMx2XheV3030c05WncQqYyawQ0g2txMurAKHO4j6BoIiR3UAheZR6sx7ZmDOuLxvPegsUAaHn-7ZLHid-h_EKCm7O8LU_SNLqaWPlXSgIiZiSudtCKlYPrv-dXqrFpqcJBX-BE7bkhtbA04-iSjvoYblNBDYPy_9kMY0WEjTfuPe7I5C3ZTOaaETixvtmw5BpkuJXU31-2Pa11LPtuDXAqgwy4FtGs2PhgGN4qYBlUIAYGDFttsjhBZaB-Tdfea-x-h7cc9DHvj98z6eq2McPy848R3x1EmVQ4ngHVWvPWwxNESJ_CrcyxMPXMXJqiZGJl6s-Y8qOPoiORr3cMPm9P7JreU3li4PErUzAo0puhn5mA4pZYiLxMoQUebnkP4FihkhyGRJ_owxOBkgbTX4rUQ4wwruaHS0XuCsMTQ-08XmPAj769JJnlsiw0JY4M_muP57aLhLcg7cs4QTt00Amu_st9IgJ3w3uc93jTtm_ScM3x8cuRhFZkSAf0Nqx0PVNt0bRldcgem2b61rKiiDXNpTZXTOqN9tWeHa7R4C9jMObOF1tKMHpdbRusD-GFERGF1vjgMoXdclVJ52LdNy=w1920-h908" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition duration-700 hover:scale-110" alt="Romantic Glow">
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div class="glass rounded-[3rem] p-8 flex flex-col items-center justify-center text-center space-y-4 reveal">
+                <div class="w-24 h-24 bg-slate-800 rounded-full border-2 border-rose-500/30 flex items-center justify-center relative animate-spin-slow">
+                    <div class="w-8 h-8 bg-rose-500 rounded-full border-4 border-slate-900"></div>
+                    <div class="absolute inset-0 rounded-full border-t-2 border-rose-400"></div>
+                </div>
+                <div>
+                    <p class="text-xs uppercase tracking-widest text-slate-500">Now Playing</p>
+                    <h4 class="font-semibold text-rose-100 italic">Our Favorite Song</h4>
+                </div>
+            </div>
+
+            <div class="md:col-span-2 glass rounded-[3rem] overflow-hidden relative group reveal">
+                <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100" alt="Us">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent p-8 flex flex-col justify-end">
+                    <p class="handwritten text-3xl text-white">"Soulmates don't find each other, they recognize each other."</p>
+                </div>
+            </div>
+
+            <div class="glass rounded-[3rem] p-8 flex flex-col justify-between reveal">
+                <i data-lucide="sparkles" class="text-yellow-400 w-8 h-8"></i>
+                <p class="text-sm text-slate-300 italic">You're the person I want to annoy for the rest of my life.</p>
+                <div class="flex -space-x-3">
+                    <div class="w-10 h-10 rounded-full border-2 border-slate-900 bg-rose-500 flex items-center justify-center">❤️</div>
+                    <div class="w-10 h-10 rounded-full border-2 border-slate-900 bg-pink-500 flex items-center justify-center">✨</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="glass rounded-[3rem] p-10 md:col-span-1 flex flex-col justify-center space-y-6 reveal">
+                <h3 class="text-3xl font-bold playfair italic text-rose-400">To My Person,</h3>
+                <p class="text-slate-300 leading-relaxed italic">
+                    I made this space just for us. A reminder that in the middle of a busy world, you are my quiet place. I love you more than words can fit on this screen.
+                </p>
+                <i data-lucide="heart" class="text-rose-600 fill-current w-6 h-6"></i>
+            </div>
+            
+            <div class="md:col-span-2 glass rounded-[3rem] overflow-hidden bg-black reveal">
+                <iframe class="w-full h-full aspect-video md:aspect-auto" src="https://www.youtube.com/embed/WojBNnIEpR4?controls=0&autoplay=1&mute=1&loop=1&playlist=WojBNnIEpR4" frameborder="0"></iframe>
+            </div>
+        </div>
+
+        <footer class="text-center py-24 space-y-8 reveal">
+            <h1 class="text-7xl md:text-9xl font-bold tracking-tighter text-white">
+                Happy <span class="playfair italic text-rose-500">Valentine's</span>
+            </h1>
+            <p class="handwritten text-4xl text-rose-200">[Name], You are my forever.</p>
+            <div class="pt-10">
+                <button onclick="window.scrollTo(0,0)" class="bg-rose-600 hover:bg-rose-500 text-white px-10 py-4 rounded-full font-bold transition-all hover:scale-110 flex items-center gap-3 mx-auto">
+                    <i data-lucide="heart" class="fill-current"></i> Back to Top
+                </button>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        lucide.createIcons();
+
+        const cursor = document.getElementById('cursor');
+        const mainContent = document.getElementById('main-content');
+        const entry = document.getElementById('entry');
+
+        // 1. Custom Heart Cursor
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        // 2. Unlock Experience
+        function unlock() {
+            document.getElementById('lock-icon').innerHTML = '<i data-lucide="heart" class="w-10 h-10 text-rose-500 fill-current"></i>';
+            lucide.createIcons();
+            
+            entry.style.opacity = '0';
+            setTimeout(() => {
+                entry.style.display = 'none';
+                mainContent.classList.remove('hidden');
+                setTimeout(() => {
+                    mainContent.style.opacity = '1';
+                    revealTiles();
+                }, 100);
+            }, 1000);
+        }
+
+        // 3. Reveal Tiles on Scroll
+        function revealTiles() {
+            const reveals = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            reveals.forEach(tile => observer.observe(tile));
+        }
+
+        // 4. Anniversary Counter
+        const anniversary = new Date('2023-01-01'); // Change to your date!
+        function updateCounter() {
+            const now = new Date();
+            const diff = now - anniversary;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            document.getElementById('anniversary-count').innerText = `${days} Days of Loving You`;
+        }
+        updateCounter();
+
+        // 5. 3D Tilt Effect for Glass Tiles
+        document.addEventListener('mousemove', (e) => {
+            const tiles = document.querySelectorAll('.glass');
+            tiles.forEach(tile => {
+                const rect = tile.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                if (x > 0 && x < rect.width && y > 0 && y < rect.height) {
+                    const xRotation = -((y - rect.height / 2) / rect.height) * 10;
+                    const yRotation = ((x - rect.width / 2) / rect.width) * 10;
+                    tile.style.transform = `perspective(1000px) rotateX(${xRotation}deg) rotateY(${yRotation}deg) scale(1.02)`;
+                } else {
+                    tile.style.transform = `perspective(1000px) rotateX(0) rotateY(0) scale(1)`;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

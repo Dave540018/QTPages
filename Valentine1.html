@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Surprise for You</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        .cursive { font-family: 'Dancing Script', cursive; }
+        .glass {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .bg-black\/30 {
+            background-color: rgb(0 0 0 / 10%) !important;
+        }
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+        .heart-particle {
+            position: absolute;
+            bottom: -10%;
+            animation: float linear infinite;
+            z-index: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-rose-400 via-pink-500 to-orange-400 min-h-screen flex items-center justify-center p-4">
+
+    <div id="heart-container" class="fixed inset-0 overflow-hidden pointer-events-none"></div>
+
+    <main class="glass max-w-2xl w-full rounded-3xl shadow-2xl overflow-hidden relative z-10 opacity-0 transform translate-y-10 transition-all duration-1000" id="main-card">
+        
+        <div class="h-64 bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/rd-d/ALs6j_EDXp3AuffNvp61ft9x9cIFCeMm-JKKKAGY4PLp7fyoCYNWTK8bsU69kdauJRGF2iJbfHKV1YgnJkUaS7FrrRX3IUrMy4UKJXc-85GLiKRzcMfNO1Z3H8V_9K2xULM4oI_Fg3dsRBOZ0GvbsqfO2SpJ-J3X2XcuuGgRuvbvUbrTzkwU3a8dE1C2JUWyzn8YkkxQbkHyBxqmdkUA2mRt6vqSW-qA-MNjQ1Odt0nGk3qhqKmQao2k87-nAMKqDLrXKlM963N2_UEFyskha_QCa3jbU2xRqsXSJqpL7rAuEzBZ4F9HFQWfbyXa6z4QyDRjUhoGwi0f-b7U5vLxpoYHlDrlcJdcdyjiM3zEbRWifUy1dic93j-6yp-bKa75hHDMcla0UmHynRqlLsvzA1pAD4ifzAJfncMskxmbjdj59WuE-mUW9uu_jKnloSh2Te7efDloyA3qk3yTFTIp4JJqoclj29zAoeSnA7w-mmvszIrAflfPzaaY4LEug6UbcDrJBHvKxfAX-LwIWo22yP3JpjGiOyYQ_9rIlGF9jw1EiAy-IcoMxAp13udQQBhfAksXPBl3xWMl6G8DBOXAwU8kMPDxYY8g9mk3VokmoteL0w06Ieroet1YYr3e9mQbeAAI8OrubZSx0dJ6xNrgjwB1NGLnVTpSjAHTYbXpl3UdJ9n3FP-BVVQlAxbAW78VZM_dAzRueJXadslM6R3Vi1N38bV2PngtQdo5hSdH3cQjIJRE2j_4tcreUsZ4Fl6aijhaH1puKpdA_e_Te4-Xur1ZD3bnPlVpEzuPN2oiarxtjzk6JEJcUHbXLQ9MrRiMrJNtKY53jGouMAKGzxI9VnupRi2EM89DF9BPXrv_PxsfLeLst9c4wSAM9tFQFaTii55OmYHQLOwFz0HJylL-ejOj5QfXzqj9Zfynslq1V9pHRdAgVIBlgLwKLwigLTE1JLR4jBXvpieuMimyxPdVpR_Lmbzmx8OgAtYyL1h3ZDCkOEzGz6IIGSP_epc8PGpfp-yrk_3ODjARb9Tl8NCox00LlHJRuGpftCMNKNw7TENEhmuGz-IFjuyC8tpHfZkWHPhiv5wyP2PAMCJu_hvcWLylbox35jcoBxFVh4TLHZhd4wAHJ4_zacZ-0hhE-9G9o956YvUCc5jPvelTkZygUFWu=w1920-h908?auditContext=prefetch?auto=format&fit=crop&w=800&q=80');">
+            <div class="w-full h-full bg-black/30 flex items-center justify-center">
+                <h1 class="text-white text-5xl cursive drop-shadow-lg">To My Favorite Person</h1>
+            </div>
+        </div>
+
+        <div class="p-8 space-y-8">
+            <section class="text-center space-y-4">
+                <div class="flex justify-center text-rose-500">
+                    <i data-lucide="heart" class="fill-current w-12 h-12 animate-pulse"></i>
+                </div>
+                <p class="text-white text-lg leading-relaxed italic">
+                    "Every day with you feels like a beautiful dream. I wanted to put together a few of our memories here to remind you how much you mean to me. Happy Valentine's Day!"
+                </p>
+            </section>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="rounded-xl overflow-hidden border-2 border-white/20 hover:scale-105 transition-transform duration-300">
+                    <img src="https://lh3.googleusercontent.com/rd-d/ALs6j_FXyfPTyjocivERfhgXZsvcJM404C9jqQP3vQ-kMxFoGnCdVdFpC1m1TULT0NtradJT8O0gdOeL3j_9e3cqNh5Qda69u_SE4uha2h45UW7YwHCl2warUvBtViLSbRTstnweOV0Zt2JEo9fzkysqfyMGARs-CnEpn8ZUnHGuE_6v0wPL88PKqlkLWZ6AQh23h8m4jdhAErhTLitrfquqUoxOBoyRw0tduTc8rsO3knpaGgjhpOOgR9ol_G0aJd4lQa3fD50He_XWpYQHpCnfUwfGo4V1j-gPMEELvXoBseelgWBzcZUzGoCp9JW-k35Ilii_Gnt95oroFZE-hB1FxZNsGzCpI9sqNoTw8VHI_9hL9vzLbkSZ1RmKofb2KWxS0ZpzMxIhDrxQjzZrVJpOj4VHqH6QhXsfQ-ZMF9ZIyiWSmD7F9assfQCHUTgeOj6J5j7_mK68jP_R1AP4Nh3CA5Av06NWwdDu2ulyphJW6Nyw6YuqXqgyiaovIqyXn-Qlx6Bj1O6e7qqcB2F2OOaAEHyywvBsQMIW0BLXwyg-K_DA6XaLpMj9m8syEogfCb5NXMx2XheV3030c05WncQqYyawQ0g2txMurAKHO4j6BoIiR3UAheZR6sx7ZmDOuLxvPegsUAaHn-7ZLHid-h_EKCm7O8LU_SNLqaWPlXSgIiZiSudtCKlYPrv-dXqrFpqcJBX-BE7bkhtbA04-iSjvoYblNBDYPy_9kMY0WEjTfuPe7I5C3ZTOaaETixvtmw5BpkuJXU31-2Pa11LPtuDXAqgwy4FtGs2PhgGN4qYBlUIAYGDFttsjhBZaB-Tdfea-x-h7cc9DHvj98z6eq2McPy848R3x1EmVQ4ngHVWvPWwxNESJ_CrcyxMPXMXJqiZGJl6s-Y8qOPoiORr3cMPm9P7JreU3li4PErUzAo0puhn5mA4pZYiLxMoQUebnkP4FihkhyGRJ_owxOBkgbTX4rUQ4wwruaHS0XuCsMTQ-08XmPAj769JJnlsiw0JY4M_muP57aLhLcg7cs4QTt00Amu_st9IgJ3w3uc93jTtm_ScM3x8cuRhFZkSAf0Nqx0PVNt0bRldcgem2b61rKiiDXNpTZXTOqN9tWeHa7R4C9jMObOF1tKMHpdbRusD-GFERGF1vjgMoXdclVJ52LdNy=w1920-h908?auditContext=prefetch?auto=format&fit=crop&w=400&q=80" alt="Memory 1" class="w-full h-48 object-cover">
+                </div>
+                <div class="rounded-xl overflow-hidden border-2 border-white/20 flex items-center justify-center bg-black/20">
+                    <iframe class="w-full h-48" src="https://www.youtube.com/embed/WojBNnIEpR4?si=hVIE2wSnCYMbZz_I" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <footer class="pt-6 border-t border-white/10 text-center">
+                <button onclick="sharePage()" class="bg-white/20 hover:bg-white/30 text-white px-6 py-3 rounded-full font-semibold transition-all flex items-center gap-2 mx-auto">
+                    <i data-lucide="share-2" class="w-5 h-5"></i> Share the Love
+                </button>
+            </footer>
+        </div>
+    </main>
+
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Reveal card on load
+        window.addEventListener('load', () => {
+            const card = document.getElementById('main-card');
+            card.classList.remove('opacity-0', 'translate-y-10');
+        });
+
+        // Floating Hearts Logic
+        const container = document.getElementById('heart-container');
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart-particle');
+            heart.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="white" opacity="${Math.random() * 0.5 + 0.2}"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`;
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 5 + 's';
+            heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+            container.appendChild(heart);
+            setTimeout(() => heart.remove(), 8000);
+        }
+        setInterval(createHeart, 400);
+
+        // Simple Share Function
+        function sharePage() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'A Valentine for You',
+                    url: window.location.href
+                });
+            } else {
+                alert("Copy the link in your browser to share!");
+            }
+        }
+    </script>
+</body>
+</html>
