@@ -48,14 +48,16 @@ Open `valentine1.html` in:
 
 Find:
 
-```html
+
 <title>A Special Surprise for You</title>
 Replace with:
 <title>My Digital Valentine 💌</title>
-2️⃣ Change Main Heading
+
+---
+## 2️⃣ Change Main Heading
 
 Find:
-
+```html
 <h1 class="text-white text-5xl cursive drop-shadow-lg">
 To My Favorite Person
 </h1>
