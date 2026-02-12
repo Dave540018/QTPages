@@ -65,7 +65,7 @@ Replace text inside with your loved one's name:
 
 To My Dearest Anu
 ---
-##3️⃣ Change Love Message
+## 3️⃣ Change Love Message
 
 Find:
 
@@ -78,7 +78,7 @@ Replace the message inside the <p> tag with your own message.
 
 ⚠️ Keep it inside the <p> and </p> tags.
 ---
-##4️⃣ Change Share Button Text (Optional)
+## 4️⃣ Change Share Button Text (Optional)
 
 Find:
 
@@ -89,7 +89,7 @@ Replace with:
 
 Share this Surprise 💌
 ---
-##🖼 How To Replace Images
+## 🖼 How To Replace Images
 
 Find this line:
 
@@ -118,7 +118,7 @@ Then use:
 
 This works perfectly with GitHub Pages.
 ---
-##📌 Using Google Drive Images (Important)
+## 📌 Using Google Drive Images (Important)
 
 Normal Drive share links do NOT work.
 
@@ -136,7 +136,7 @@ Then use:
 
 <img src="https://drive.google.com/uc?export=view&id=FILE_ID">
 ---
-##➕ Add More Photos (Unlimited)
+## ➕ Add More Photos (Unlimited)
 
 Copy this block:
 
@@ -152,7 +152,7 @@ Paste it again inside:
 
 You can add 2, 4, 6 or more images.
 ---
-##🎥 Replace The Video
+## 🎥 Replace The Video
 
 Find:
 
@@ -174,7 +174,7 @@ Use:
 
 <iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
 ---
-##✅ Use Your Own MP4 Video
+## ✅ Use Your Own MP4 Video
 
 Replace iframe with:
 
@@ -188,10 +188,10 @@ Put your video inside:
 /assets/video.mp4
 
 ---
-##⚠️ Google Drive videos may not work properly.
+## ⚠️ Google Drive videos may not work properly.
 Best method is GitHub assets or YouTube unlisted video.
 
-##🎨 Change Background Gradient Colors (Optional)
+## 🎨 Change Background Gradient Colors (Optional)
 
 Find:
 
@@ -202,7 +202,7 @@ You can change colors like:
 
 from-pink-300 via-rose-400 to-red-500
 ---
-##❗ Common Problems
+## ❗ Common Problems
 Image Not Showing?
 
 Make sure link is public
@@ -221,7 +221,7 @@ Share Button Not Working?
 
 Works best on mobile browsers.
 ---
-##📁 Other Files
+## 📁 Other Files
 
 valentine2.html → Same editing steps (design only changes)
 
@@ -238,7 +238,7 @@ Put music file inside:
 
 /assets/music.mp3
 ---
-##❤️ Final Tip
+## ❤️ Final Tip
 
 You do NOT need to understand the code.
 Only change:
